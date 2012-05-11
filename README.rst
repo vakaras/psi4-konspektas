@@ -70,6 +70,7 @@ sukurta iš viso. Pavyzdžiui, taip galėtų atrodyti konspektų nustatymai::
 
     \docname{Psichologijos įvadas}
     \doctype{Paskaitų konspektas}
+    \lecturername{Prof. habil. dr. Vardas Pavardė}
 
 Aukštosios mokyklos pavadinimą galime pakeisti su komanda::
 

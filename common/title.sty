@@ -28,6 +28,8 @@ Programų sistemų katedra%
 % Darbo vadovas.
 \newcommand{\supervisorname}[1]{\def\@supervisorname{#1}}
 \newcommand{\reviewername}[1]{\def\@reviewername{#1}}
+% Dėstytojas.
+\newcommand{\lecturername}[1]{\def\@lecturername{#1}}
 
 \def\@authorinformation{%
   \@ifundefined{@authorname}{}{%
@@ -65,6 +67,9 @@ Programų sistemų katedra%
       }
       % Dokumento tipas.
       {\Large \@doctype}\\[4.0cm]
+      \@ifundefined{@lecturername}{}{%
+      Dėstytojas: \@lecturername%
+      }
       % Informacija apie autorių.
       \@authorinformation
       % Data.
