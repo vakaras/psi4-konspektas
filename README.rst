@@ -3,7 +3,6 @@ MIF Starter
 ===========
 
 VU MIF dokumentų XeLaTeX šablonas.
-
 Struktūra::
 
     ├── common          – tai kas bendra visiems;
@@ -107,6 +106,11 @@ Darbai
         <http://en.wikibooks.org/wiki/LaTeX/Colors>`_;
     +   `LaTeX knygos puslapis apie teoremas
         <http://en.wikibooks.org/wiki/LaTeX/Theorems>`_;
+    +   fancyvrb paketas leidžia environment turinį įrašyti
+        nepakeistą į failą;
+    +   environ paketas leidžia kurti environment, kurių
+        turinys pasiekiamas per \BODY komandą.
+
 
 Naudingos nuorodos
 ==================
