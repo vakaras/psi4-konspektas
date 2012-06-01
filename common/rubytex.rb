@@ -124,31 +124,6 @@ class Table
     xrow_e(y[0].h_mc(1), y[1].h_mc(1), y[2].h_mc(5), y[3].h_mc(6), y[4].h_mc(1));
   end;
 
-  # KLM BEGIN
-  def klm_calc(seq)
-    time = 0;
-    seq.scan(/([0-9]*)([HKMP])/).each do |m|
-      n     = m[0].empty? ? 1 : m[0].to_i
-      c     = m[1]
-      time += @klm[c] * n;
-    end;
-    return time;
-  end;
-
-  def xrow_klm0()
-    @klm_time = 0;
-    @klm      = {"K" => 0.2, "P" => 1.1, "H" => 0.4, "M" => 1.35};
-  end;
-
-  def xrow_klm1(annot, seq, comment = "")
-    @klm_time += (time = klm_calc(seq));
-    xrow_e(annot, seq, time.to_s);
-  end;
-
-  def xrow_klm2()
-    xrow_e('\textbf{Iš viso}', "", '\textbf{%.2f}' % [@klm_time]);
-  end;
-  # KLM END
 end; 
 
 def xtable(src)
@@ -173,7 +148,7 @@ def main()
   $dst = File.open("dist/output.tmp", "w");
   fun  = src.readline.strip;
   arg  = src.read.gsub('@', '\\');
-  puts "READ: #{arg}"
+  #puts "READ: #{arg}"
   send(fun, arg);
   $dst.close
 end;
