@@ -131,15 +131,14 @@
 \titleformat\subsubsection{\normalfont\bf}{\thesubsubsection}{1em}{}
 \titlespacing\chapter{0.0cm}{*1}{1.0cm}
 
-\newcommand{\schapter}[1]
+\NewDocumentCommand \Chapter {s m}
 {
-  \chapter{\uppercase{#1}}
-}
-
-\newcommand{\xchapter}[1]
-{
-  \addcontentsline{toc}{chapter}{\protect\numberline{} #1}
-  \chapter*{#1}
+  \IfBooleanTF {#1}
+    {
+      \addcontentsline{toc}{chapter}{\uppercase{#2}}
+      \chapter*{\uppercase{#2}}
+    }
+    { \chapter{\uppercase{#2}} }
 }
 
 \renewpagestyle{plain}
@@ -185,7 +184,7 @@
 \let\oldbibliography\bibliography
 \renewcommand{\bibliography}[1]{%
     \cleardoublepage%
-    \addcontentsline{toc}{chapter}{\refname}%}
+    \addcontentsline{toc}{chapter}{\uppercase{\refname}}%}
     \bibliographystyle{alpha}%
     \oldbibliography{#1}%
 }
