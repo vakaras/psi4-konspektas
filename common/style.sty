@@ -143,6 +143,8 @@
 \titleformat\subsubsection{\normalfont\bf}{\thesubsubsection}{1em}{}
 \titlespacing\chapter{0.0cm}{*1}{1.0cm}
 
+\usepackage{xparse}
+
 \NewDocumentCommand \Chapter {s m}
 {
   \IfBooleanTF {#1}
@@ -176,13 +178,16 @@
 % FIGURES                                                                  %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\usepackage[lithuanian]{babel}
-
 \renewcommand{\thefigure}{\thechapter\arabic{figure}.}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % TRANSLATIONS                                                             %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[lithuanian]{babel}
+\usepackage{csquotes}
+
+\DeclareQuoteStyle{lithuanian}{„}{“}{„}{“}
 
 \addto\captionslithuanian{\renewcommand{\bibname}{Šaltiniai}}
 \addto\captionslithuanian{\renewcommand{\refname}{Šaltiniai}}
@@ -193,12 +198,90 @@
 % BIBLIOGRAPHY                                                             %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\let\oldbibliography\bibliography
-\renewcommand{\bibliography}[1]{%
-    \cleardoublepage%
-    \addcontentsline{toc}{chapter}{\uppercase{\refname}}%}
-    \bibliographystyle{alpha}%
-    \oldbibliography{#1}%
+%\usepackage[style=iso-authoryear]{biblatex}
+%\usepackage[style=iso-numeric]{biblatex}
+\usepackage[style=alphabetic]{biblatex}
+%\usepackage[bibstyle=iso-authoryear, citestyle=alphabetic]{biblatex}
+
+\renewcommand\multicitedelim{\addsemicolon\space}
+
+\addbibresource{./content/bibliography.bib}
+\addbibresource{./examples/bibliography.bib}
+
+\defbibheading{mifheading}[\bibname]{\Chapter*{Šaltiniai}}
+
+\newcommand{\Bibliography}
+{
+  \printbibliography[heading=mifheading]
+}
+
+
+% 173 psl.
+\DefineBibliographyStrings{lithuanian}{%
+% 4.9.2.1
+  bibliography = {Šaltiniai},
+  references = {Šaltiniai},
+  %shorthands =
+% 4.9.2.2
+  editor = {redaktorius},
+  editors = {redaktoriai},
+  compiler = {sudarytojas},
+  compilers = {sudarytojai},
+  %founder = 
+  %founders = 
+  %continuator =
+  %continuators =
+  redactor = {redaktorius},
+  redactors = {redaktoriai},
+  %reviser =
+  %revisers = 
+  %collaborator =
+  %collaborators =
+  %translator =
+  %translators =
+  %commentator =
+  %commentators =
+  %annotator =
+  %annotators =
+% 4.9.2.3
+% 4.9.2.4
+% 4.9.2.5
+% 4.9.2.6
+% 4.9.2.7
+% 4.9.2.8
+% 4.9.2.9
+% 4.9.2.10
+% 4.9.2.11
+% 4.9.2.12
+% 4.9.2.13
+% 4.9.2.14
+  and = {ir},
+  andothers = {ir kiti},
+  andmore = {ir daugiau},
+% 4.9.2.15
+  url = {Prieiga per internetą},
+  urlseen = {žiūrėta},
+  file = {byla},
+  library = {biblioteka},
+  abstract = {santrauka},
+  annotation = {anotacija},
+% 4.9.2.16
+% 4.9.2.17
+  january = {sausis},
+  february = {vasaris},
+  march = {kovas},
+  april = {balandis},
+  may = {gegužė},
+  june = {birželis},
+  july = {liepa},
+  august = {rugpjūtis},
+  september = {rugsėjis},
+  october = {spalis},
+  november = {lapkritis},
+  december = {gruodis},
+% 4.9.2.18
+% 4.9.2.19
+% 4.9.2.20
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -247,7 +330,7 @@
 \newcommand{\arccot}{\mathop{\operator@font arcctg}\nolimits} 
 
 % Išsireiškimo anglų kalba nurodymas.
-\newcommand{\en}[1]{(ang. #1)}
+\newcommand{\en}[1]{(ang. \emph{#1})}
 
 % Svarbiam tekstui.
 \newcommand{\strong}[1]{{\bf #1}}
@@ -296,8 +379,8 @@
 
 \makeatletter
 \def\namedlabel#1#2{\begingroup
-	#2%
-	\def\@currentlabel{#2}%
-	\phantomsection\label{#1}\endgroup
+       #2%
+       \def\@currentlabel{#2}%
+       \phantomsection\label{#1}\endgroup
 }
 \makeatother

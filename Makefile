@@ -20,7 +20,11 @@ XELATEX_COMMAND=xelatex ${XELATEX_ARGS}
 all: config/main.pdf
 
 %.pdf: %.tex
-	echo ${TEXINPUTS} ${PATH}
+	@echo "Ruošiama aplinka."
+	mkdir -p content
+	touch content/bibliography.bib
+	@echo "Kompiliuojama."
+	@echo ${TEXINPUTS} ${PATH}
 	$(XELATEX_COMMAND)
 	mv dist/document-blx.bib .
 	bibtex "${XELATEX_OUTPUT_DIR}/${XELATEX_JOB_NAME}"
