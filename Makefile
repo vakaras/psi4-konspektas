@@ -17,18 +17,25 @@ XELATEX_ARGS=-shell-escape \
 						 "${XARG1}${XARG2}${XARG3}"
 XELATEX_COMMAND=xelatex ${XELATEX_ARGS}
 
-all: config/main.pdf
+all: prepare config/main.pdf
+
+CONTENT_DIR_EXISTS := $(wildcard content)
+
+ifeq ($(strip $(CONTENT_DIR_EXISTS)),)
+prepare:
+	@echo "Ruošiama aplinka."
+	mkdir content
+	cp examples/bibliography.bib content/bibliography.bib
+else
+prepare:
+	@echo "Aplinka jau paruošta"
+endif
 
 %.pdf: %.tex
-	@echo "Ruošiama aplinka."
-	mkdir -p content
-	touch content/bibliography.bib
 	@echo "Kompiliuojama."
 	@echo ${TEXINPUTS} ${PATH}
 	$(XELATEX_COMMAND)
-	mv dist/document-blx.bib .
-	bibtex "${XELATEX_OUTPUT_DIR}/${XELATEX_JOB_NAME}"
-	mv document-blx.bib dist/
+	biber "${XELATEX_OUTPUT_DIR}/${XELATEX_JOB_NAME}"
 	$(XELATEX_COMMAND)
 
 show:
