@@ -149,8 +149,8 @@
 {
   \IfBooleanTF {#1}
     {
-      \addcontentsline{toc}{chapter}{\uppercase{#2}}
       \chapter*{\uppercase{#2}}
+      \addcontentsline{toc}{chapter}{\uppercase{#2}}
     }
     { \chapter{\uppercase{#2}} }
 }
