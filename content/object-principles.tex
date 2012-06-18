@@ -1,1 +1,63 @@
 \Chapter{Objektiškai orientuoto projektavimo principai}
+
+\human{Robertas C. Martinas} savo darbe \cite{martin2000design}
+išskyrė penkis pagrindinius objektiškai orientuoto programavimo
+principus, kurie sutrumpintai vadinami \strong{SOLID}:
+\begin{enumerate}
+  \item \emph{Vienos atsakomybės principas} \en{Single responsibility
+    principle, SRP} – objektas turi būti atsakingas tik už vieną
+    dalyką.
+  \item \emph{Atvirumo-uždarumo principas} \en{Open/closed principle, OCP}
+    – programinės įrangos esybės turi būti atviros praplėtimui, bet
+    uždaros pakeitimui.
+  \item \emph{\human{Liskovos} pakeitimo principas} \en{Liskov substitution
+    principle, LSP} – objektai programoje turi būti pakeičiami
+    jų potipių egzemplioriais, nedarant poveikio programos teisingumui.
+  \item \emph{Sąsajų atskyrimo principas} \en{Intrerface segregation
+    principle, ISP} – daug specialiuotų klientams sąsajų yra geriau
+    nei viena bendro pobūdžio.
+  \item \emph{Priklausomybių apgręžimo principas} \en{Dependency
+    inversion priciple, DIP} – priklausyti nuo abstrakcijų, nepriklausyti
+    nuo realizacijų.
+\end{enumerate}
+
+Plačiau: \url{http://en.wikipedia.org/wiki/SOLID},
+\cite{martin2000design}, \cite{Grosberg1997design},
+\cite{martin1995designing}, \cite{martin2003agile}.
+
+\section{Vienos atsakomybės principas}
+
+\url{http://en.wikipedia.org/wiki/Single_responsibility_principle}
+
+\section{Atvirumo-uždarumo principas}
+
+\url{http://en.wikipedia.org/wiki/Open/closed_principle}
+
+\section{\human{Liskovos} pakeitimo principas}
+
+\url{http://en.wikipedia.org/wiki/Liskov_substitution_principle}
+
+\section{Sąsajų atskyrimo principas}
+
+\url{http://en.wikipedia.org/wiki/Interface_segregation_principle}
+
+\section{Priklausomybių apgręžimo principas}
+
+\url{http://en.wikipedia.org/wiki/Dependency_inversion_principle}
+
+\section{Generalizacijos-specializacijos santykis}
+
+TODO
+
+Generalizacijos-specializacijos santykis, kaip tėvinės klasės išplėtimas
+ir apribojimas, specializacijos ribojant vengimas.
+
+Atitinka PRE ir POST sąlygas tėvynėje ir vaikinėje klasėje.  
+Pavyzdžiui, tėvynė (pre arg>5 rez >10), vaikinė (arg>3 rez>11) gerai.
+
+\section{Konceptualių hierarchijų modeliavimas}
+
+TODO: \cite{Grosberg1997design}.
+
+Konceptualių hierarchijų modeliavimas, nepažeidžiant LSP
+(išvengiant specializacijos ribojant).
