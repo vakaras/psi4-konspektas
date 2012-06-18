@@ -1,1 +1,61 @@
-\Chapter{Modulių architektūros principai}
+\Chapter{Paketų architektūros principai}
+
+Paketų architektūros principai nurodo kaip turėtų organizuojama klasių
+struktūra didesnėse sistemose, kad jos būdų labiau organizuotos
+ir lengviau valdomos. Principus galima suskirstyti į dvi grupes:
+\begin{enumerate}
+  \item \emph{Paketų rišlumo principai} padeda suprasti į kuriuos
+    paketus, kurios klasės turėtų būti dedamos:
+    \begin{enumerate}
+      \item \nameref{section:package:rep}.
+      \item \nameref{section:package:ccp}.
+      \item \nameref{section:package:crp}.
+    \end{enumerate}
+  \item \emph{Paketų jungimo principai} padeda suprasti kaip paketa
+    turėtų būti susieti vieni su kitais:
+    \begin{enumerate}
+      \item \nameref{section:package:adp}.
+      \item \nameref{section:package:sdp}.
+      \item \nameref{section:package:sap}.
+    \end{enumerate}
+\end{enumerate}
+
+Plačiau: \url{http://en.wikipedia.org/wiki/Package\_Principles},
+\cite{martin2000design}, \cite{martin1995designing},
+\cite{martin2003agile}.
+
+\section{Panaudojimo/išleidimo ekvivalentumo principas}
+
+\label{section:package:rep}
+
+\en{Reuse/Release Equivalence Principle, REP}.
+
+\section{Bendro uždarinio principas}
+
+\label{section:package:ccp}
+
+\en{Common Closure Principle, CCP}
+
+\section{Bendro panaudojimo principas}
+
+\label{section:package:crp}
+
+\en{Common Reuse Principle, CRP}
+
+\section{Neciklinės priklausomybės principas}
+
+\label{section:package:adp}
+
+\en{Acyclic Dependency Principle, ADP}
+
+\section{Stabilios priklausomybės principas}
+
+\label{section:package:sdp}
+
+\en{Stable Dependency Principle, SDP}
+
+\section{Stabilios abstrakcijos principas}
+
+\label{section:package:sap}
+
+\en{Stable Abstraction Principle, SAP}
