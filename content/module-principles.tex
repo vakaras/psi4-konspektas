@@ -24,8 +24,6 @@ Plačiau: \url{http://en.wikipedia.org/wiki/Package\_Principles},
 \cite{martin2000design}, \cite{martin1995designing},
 \cite{martin2003agile}.
 
-TODO: Metrikos.
-
 \section{Paketų rišlumo principai}
 
 \subsection{Panaudojimo/išleidimo ekvivalentumo principas}
@@ -34,17 +32,31 @@ TODO: Metrikos.
 
 \en{Reuse/Release Equivalence Principle, REP}.
 
+Kodas, kuris yra kartu išleidžiamas yra kartu ir perpanaudojamas.
+
 \subsection{Bendro uždarinio principas}
 
 \label{subsection:package:ccp}
 
 \en{Common Closure Principle, CCP}
 
+Klasės, kurios yra linkusios keistis kartu, turėtų priklausyti
+tam pačiam paketui.
+
 \subsection{Bendro panaudojimo principas}
 
 \label{subsection:package:crp}
 
 \en{Common Reuse Principle, CRP}
+
+Klasės, kurios nėra naudojamos kartu, neturėtų priklausyti tam
+pačiam paketui.
+
+Kai klientas priklauso nuo klasės, tai jis priklauso nuo paketo,
+kurioje ta klasė yra. Jei išėjo nauja paketo versija, tai nepaisant
+to, kad kliento naudojama klasė nepasikeitė, vis tiek klientas
+turės būti patikrintas, todėl į paketus turėtų būti dedamos
+tik tos klasės, kurios bus perpanaudojamos kartu.
 
 \section{Paketų jungimo principai}
 
@@ -54,14 +66,51 @@ TODO: Metrikos.
 
 \en{Acyclic Dependency Principle, ADP}
 
+Priklausomybės tarp paketų neturėtų būti ciklinės.
+
 \subsection{Stabilios priklausomybės principas}
 
 \label{subsection:package:sdp}
 
 \en{Stable Dependency Principle, SDP}
 
+Paketai turėtų priklausyti nuo stabilesnių už juos. Stabilumas, tai
+kiek darbo reikia įdėti, kad padaryti pakeitimą.
+
+Paketo nestabilumas:
+\begin{equation*}
+  I = \frac{Ce}{Ce + Ca},
+\end{equation*}
+čia:
+\begin{description}
+  \item[$Ca$] – įeinantys ryšiai (skaičius nepriklausančių paketui
+    klasių, kurios priklauso nuo klasių esančių jo viduje);
+  \item[$Ce$] – išeinantys ryšiai (skaičius nepriklausančių paketui
+    klasių, nuo kurių priklauso jo viduje esančios).
+\end{description}
+
+Performulavus principą: paketas turi priklausyti nuo paketų, kurių
+$I$ mažesnis nei jo.
+
 \subsection{Stabilios abstrakcijos principas}
 
 \label{subsection:package:sap}
 
 \en{Stable Abstraction Principle, SAP}
+
+Stabilus paketai turėtų būti abstraktūs.
+
+Paketo abstraktumas:
+\begin{equation*}
+  A = \frac{Na}{Nc},
+\end{equation*}
+čia:
+\begin{description}
+  \item[$Nc$] – klasių kiekis pakete;
+  \item[$Na$] – abstrakčių klasių kiekis pakete.
+\end{description}
+
+Paketo nuotolis nuo norimo varianto:
+\begin{equation*}
+  D' = |A + I - 1|.
+\end{equation*}
